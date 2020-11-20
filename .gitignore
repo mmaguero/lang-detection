@@ -1,3 +1,12 @@
+# project
+lang.cmd
+venvLD
+src/lib/*.bin
+*.txt
+*.log
+*/*.txt
+*/*.log
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -14,7 +23,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
