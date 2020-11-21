@@ -11,7 +11,7 @@ from data_wrangler import infer_language
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
-logging.basicConfig(filename=str(pathlib.Path(__file__).parents[0].joinpath('tw_coronavirus.log')),
+logging.basicConfig(filename=str(pathlib.Path(__file__).parents[0].joinpath('lang_detection.log')),
                     level=logging.DEBUG)
 
 @click.command()

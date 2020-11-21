@@ -5,7 +5,7 @@ import pathlib
 from utils.language_detector import detect_language
 
 
-logging.basicConfig(filename=str(pathlib.Path(__file__).parents[0].joinpath('tw_coronavirus.log')),
+logging.basicConfig(filename=str(pathlib.Path(__file__).parents[0].joinpath('lang_detection.log')),
                     level=logging.DEBUG)
 
 
