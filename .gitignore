@@ -2,7 +2,7 @@
 lang.cmd
 venvLD
 src/lib/*.bin
-*.txt
+#*.txt
 *.log
 */*.txt
 */*.log
