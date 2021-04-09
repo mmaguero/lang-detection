@@ -2,9 +2,9 @@
 
 # Installation
 
-    Install requirements pip install -r requirements.txt
+Install requirements `pip install -r requirements.txt`
     
-    Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin)
+Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin)
 
 # Command Line Interface
 
