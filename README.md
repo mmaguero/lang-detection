@@ -19,9 +19,11 @@ All commands must be run from the src directory.
 
 ## Detect language of tweets
 
-python run.py [data_dir] [file_name_of_tweets] [language_lexicon] --detect_language --guarani
+`python run.py [data_dir] [file_name_of_tweets] [language_lexicon] --detect_language --guarani`
 
     data_dir: path to data directory and must be relative to the src directory. Required.
     file_name_of_tweets: Name of the file containing the tweets in CSV format. Required.
     language_lexicon: Name of the file containing the language's (to-identify) words lexicon. Optional. In fact, language_lexicon can be any low-resource language.
     guarani: The language (to-identify) is Guarani (or another low-resource language)? Optional. Needed for language_lexicon.
+    
+See also: [lang](lang.cmd), [lang_2](lang_2.cmd).
