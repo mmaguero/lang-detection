@@ -1,5 +1,5 @@
 # project
-lang.cmd
+#lang.cmd
 venvLD
 src/lib/*.bin
 #*.txt
