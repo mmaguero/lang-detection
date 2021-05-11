@@ -1,4 +1,13 @@
-### Partially forked from https://github.com/social-link-analytics-group-bsc/tw_coronavirus
+# Detectors
+
+Tools used for this purpose: 
+- [polyglot](https://github.com/aboSamoor/polyglot)*, 
+- [fastText](https://github.com/facebookresearch/fastText/tree/master/python)*, 
+- [langdetect](https://pypi.org/project/langdetect/),
+- [langid](https://github.com/saffsd/langid.py), and
+- [textcat](https://www.nltk.org/_modules/nltk/classify/textcat.html)*.
+
+\*: Supports the Guarani language.
 
 # Installation
 
@@ -27,3 +36,6 @@ All commands must be run from the src directory.
     guarani: The language (to-identify) is Guarani (or another low-resource language)? Optional. Needed for language_lexicon.
     
 See also: [lang](lang.cmd), [lang_2](lang_2.cmd).
+
+---
+Note: <small>Partially forked from https://github.com/social-link-analytics-group-bsc/tw_coronavirus in v1.0.</small>
