@@ -11,6 +11,10 @@ Tools used for this purpose:
 
 # Installation
 
+## Pre-requisites:
+
+Install [**polyglot** dependencies](https://github.com/aboSamoor/polyglot/blob/master/docs/Installation.rst).
+
 Install requirements `pip install -r requirements.txt`
     
 Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin).
@@ -19,7 +23,8 @@ Download the crudaban corpus.
 
 ```
 import nltk
-nltk.download('crudaban')
+nltk.download('crubaban')
+nltk.download('punkt')
 ```
 
 # Command Line Interface
