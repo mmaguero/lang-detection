@@ -10,6 +10,7 @@ from langdetect import detect_langs
 from polyglot.detect import Detector
 from langid.langid import LanguageIdentifier, model
 from nltk.classify import textcat
+from utility import set_iso_639
 
 
 # Load module for fasttext
@@ -98,10 +99,13 @@ def detect_language(text, guarani=False):
         # and ..
         conf_textcat = float(abs(softmax[0]-1)) # get softmax of min distance, substract 1 for inverse value
         lang_textcat = tc_cls.guess_language(text)  # a str with min distance (near to lang)
+        # to ISO 639-1
+        lang_textcat = set_iso_639(lang_textcat)
         if conf_textcat < threshold_confidence:
             lang_textcat = 'undefined'
     except Exception as e:
         lang_textcat = 'undefined'
+        print('lang_textcat',e)
     lang_detected[lang_textcat] += 1
 
     # choose language with the highest counter
