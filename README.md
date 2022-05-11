@@ -19,11 +19,11 @@ Install requirements `pip install -r requirements.txt`
     
 Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin).
 
-Download the crudaban corpus.
+Download the crubadan corpus.
 
 ```
 import nltk
-nltk.download('crubaban')
+nltk.download('crubadan')
 nltk.download('punkt')
 ```
 
