@@ -11,6 +11,7 @@ from langdetect import detect_langs
 from polyglot.detect import Detector
 from langid.langid import LanguageIdentifier, model
 #from nltk.classify import textcat
+#from utility import set_iso_639
 import gcld3
 
 
@@ -130,7 +131,7 @@ def detect_language(text, guarani=False):
     except:
         lang_gcld3 = 'undefined'
     lang_detected[lang_gcld3] += 1        
-    
+
 
     # choose language with the highest counter
     max_counter, pref_lang = -1, ''

@@ -5,21 +5,27 @@ Tools used for this purpose:
 - [fastText](https://github.com/facebookresearch/fastText/tree/master/python)*, 
 - [langdetect](https://pypi.org/project/langdetect/),
 - [langid](https://github.com/saffsd/langid.py), and
-- [textcat](https://www.nltk.org/_modules/nltk/classify/textcat.html)*.
+- ~~[textcat](https://www.nltk.org/_modules/nltk/classify/textcat.html)*.~~
+- [gcld3](https://github.com/google/cld3).
 
 \*: Supports the Guarani language.
 
 # Installation
 
+## Pre-requisites:
+
+Install [**polyglot** dependencies](https://github.com/aboSamoor/polyglot/blob/master/docs/Installation.rst).
+
 Install requirements `pip install -r requirements.txt`
     
 Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin).
 
-Download the crudaban corpus.
+~~Download the crubadan corpus.~~
 
 ```
-import nltk
-nltk.download('crudaban')
+~~import nltk~~
+~~nltk.download('crubadan')~~
+~~nltk.download('punkt')~~
 ```
 
 # Command Line Interface
