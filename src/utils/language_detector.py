@@ -3,13 +3,15 @@ import os
 from collections import defaultdict
 import numpy as np
 import math
+#from utility import set_iso_639
 
 # Language detection tools
 import fasttext
 from langdetect import detect_langs
 from polyglot.detect import Detector
 from langid.langid import LanguageIdentifier, model
-from nltk.classify import textcat
+#from nltk.classify import textcat
+import gcld3
 
 
 # Load module for fasttext
@@ -19,7 +21,10 @@ ft_model = fasttext.load_model('lib/lid.176.bin')
 langid_identifier = LanguageIdentifier.from_modelstring(model, norm_probs=True)
 
 # Instiantiate a textcat language classifier
-tc_cls = textcat.TextCat()
+#tc_cls = textcat.TextCat()
+
+#  Instiantiate a google cld3 language identifier model
+detector = gcld3.NNetLanguageIdentifier(min_num_bytes=0, max_num_bytes=1000)
 
 
 def detect_language(text, guarani=False):
@@ -85,7 +90,8 @@ def detect_language(text, guarani=False):
     
     # infer language using textcat
     # WARN: unlike the others, this one returns ISO 639-3
-    try:
+    # commented due to low accuracy
+    """try:
         # distances
         distances = tc_cls.lang_dists(text)  # a dict of 437 elements
         lang_textcat_far = max(distances.values())
@@ -98,16 +104,38 @@ def detect_language(text, guarani=False):
         # and ..
         conf_textcat = float(abs(softmax[0]-1)) # get softmax of min distance, substract 1 for inverse value
         lang_textcat = tc_cls.guess_language(text)  # a str with min distance (near to lang)
+        # to ISO 639-1
+        lang_textcat = set_iso_639(lang_textcat)
         if conf_textcat < threshold_confidence:
             lang_textcat = 'undefined'
     except Exception as e:
         lang_textcat = 'undefined'
-    lang_detected[lang_textcat] += 1
+        print('lang_textcat',e)
+    lang_detected[lang_textcat] += 1"""
+
+    # infer language using google cld3
+    try:
+        gcld3_detector =  detector.FindLanguage(text=text)
+        lang_gcld3 = gcld3_detector.language
+        conf_gcld3 = gcld3_detector.probability
+        if conf_gcld3 >= threshold_confidence:
+            # sometimes gcld3  returns the language
+            # code with an underscore, e.g., zh_Hant.
+            # next, the underscore is removed
+            idx_underscore = lang_gcld3.find('_')
+            if idx_underscore != -1:
+                lang_gcld3 = lang_gcld3[:idx_underscore]
+        else:
+            lang_gcld3 = 'undefined'
+    except:
+        lang_gcld3 = 'undefined'
+    lang_detected[lang_gcld3] += 1        
+    
 
     # choose language with the highest counter
     max_counter, pref_lang = -1, ''
     for lang, counter in lang_detected.items():
-        if lang == 'undefined' or not lang:
+        if not lang: # or lang == 'undefined'
             continue
         if counter > max_counter:
             pref_lang = lang
@@ -115,5 +143,5 @@ def detect_language(text, guarani=False):
         elif counter == max_counter:
             pref_lang += '_' + lang
 
-    return (pref_lang if pref_lang != '' else 'undefined', lang_fasttext, lang_langid, lang_langdetect, lang_polyglot, lang_textcat)
+    return (pref_lang if pref_lang != '' else 'undefined', lang_fasttext, lang_langid, lang_langdetect, lang_polyglot, lang_gcld3) #lang_textcat)
     

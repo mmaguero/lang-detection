@@ -56,14 +56,15 @@ def infer_language(data_folder, input_file_name, sample=False, guarani=False, la
                     else:
                         logging.info('[{0}] Infering language of tweet: {1}'.\
                                 format(row_counter, row['tweet_id']))
-                        lang, lang_fasttext, lang_langid, lang_langdetect, lang_polyglot, lang_textcat = detect_language(row['tweet'], guarani)
+                        lang, lang_fasttext, lang_langid, lang_langdetect, lang_polyglot, lang_gcld3 = #lang_textcat = 
+                            detect_language(row['tweet'], guarani)
                         csv_writer = csv.DictWriter(csv_out, fieldnames=['tweet_id', 'lang',
-                             'lang_fasttext','lang_langid','lang_langdetect','lang_polyglot', 'lang_textcat'])
+                             'lang_fasttext','lang_langid','lang_langdetect','lang_polyglot', 'lang_gcld3']) #'lang_textcat'])
                         if row_counter==1 and len(processed_tweet_ids)==0:
                             csv_writer.writeheader()
                         csv_writer.writerow({'tweet_id': row['tweet_id'], 'lang': lang,
                             'lang_fasttext': lang_fasttext, 'lang_langid': lang_langid, 'lang_langdetect': lang_langdetect,
-                            'lang_polyglot': lang_polyglot, 'lang_textcat': lang_textcat})
+                            'lang_polyglot': lang_polyglot, 'lang_gcld3': lang_gcld3}) #'lang_textcat': lang_textcat})
     except Exception as e:
         logging.exception('The following error occurs when infering language '\
                           'of tweets')
