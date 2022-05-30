@@ -23,9 +23,12 @@ Download fastText [lib](https://dl.fbaipublicfiles.com/fasttext/supervised-model
 ~~Download the crubadan corpus.~~
 
 ```
-~~import nltk~~
-~~nltk.download('crubadan')~~
-~~nltk.download('punkt')~~
+# commented out due to low precision of textcat, use glcd3 instead.
+"""
+import nltk
+nltk.download('crubadan')
+nltk.download('punkt')
+"""
 ```
 
 # Command Line Interface
